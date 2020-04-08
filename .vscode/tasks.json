@@ -4,35 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "List the current folder content",
+            "label": "Rebuild grub",
             "type": "shell",
-            "command": "ls -l"
-
-        },
-        {
-            "label": "Download and install the windows dependencies (Windows10)",
-            "type": "shell",
-            "windows": {
-                "command": [
-                    "if (Test-Path -Path 'C:\\sextant') {rmdir -r C:\\sextant};",
-                    "if (Test-Path -Path 'C:\\extract_sextant') {rmdir -r C:\\extract_sextant};",
-                    "Invoke-WebRequest http://www.menaud.fr/Cours/Systeme/Subjects/Codes/PS1/sextant_Win10_64.zip -O sextant_Win10_64.zip;",
-                    "Expand-Archive -Force sextant_Win10_64.zip C:\\extract_sextant;",
-                    "mv C:\\extract_sextant\\sextant C:\\sextant;",
-                    "rmdir -r C:\\extract_sextant;",
-                    "rm sextant_Win10_64.zip;"
-                ],
-                "options": {
-                    "env": {
-                        "PATH": "C:\\sextant\\ccompil"
-                    }
-                }
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
+            "command": "cd build; mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o boot/grub.iso . "
         },
         {
             "label": "Build Sextant",
@@ -66,7 +40,7 @@
                     "env": {
                         "PATH": "C:\\sextant\\ccompil"
                     }
-                }                
+                }
             },
             "linux": {
                 "comments": "To quit Alt + 2 > quit",
