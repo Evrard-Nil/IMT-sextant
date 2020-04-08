@@ -67,7 +67,7 @@ setkey parenright minus
 setkey less backquote
 setkey greater tilde
 #
-# "#" ==> la touche "£"
+# "#" ==> la touche "ï¿½"
 setkey numbersign braceright
 #
 # "|" ==> touche "mu" (et peut-etre "<"), identique a QWERTY
@@ -87,13 +87,13 @@ setkey braceright underscore
 # Fin des transpositions
 ########################## Menu Grub ###############################
 default 0
-timeout 1
+timeout 5
 title Sextant
 dhcp
 kernel (nd)/sextant.elf
 boot
 
-title SOLUTION
+title Solution
 dhcp
-kernel (nd)/sos.elf
+kernel (nd)/correction.elf
 boot
